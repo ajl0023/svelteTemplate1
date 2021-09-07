@@ -3,8 +3,10 @@
 
   import "svelte-watch";
   import CardContainer from "./components/CardContainer/CardContainer.svelte";
+  import Modal from "./components/Modal/Modal.svelte";
   import Navbar from "./components/Navbar/Navbar.svelte";
   import ScrollContainer from "./components/ScrollContainer/ScrollContainer.svelte";
+  import { pagePositions } from "./stores";
   let windowThreshHold = false;
   function handleResponsiveResize() {
     if (window.innerWidth <= 650) {
@@ -30,6 +32,7 @@
   {:else}
     <CardContainer />
   {/if}
+  <Modal />
 </div>
 
 <style lang="scss">

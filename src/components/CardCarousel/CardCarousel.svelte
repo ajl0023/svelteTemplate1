@@ -1,7 +1,7 @@
 ﻿<script>
   import { onMount } from "svelte";
 
-  import { textPages } from "../../pageContent";
+  import { navToLink, textPages } from "../../pageContent";
   export let page;
   export let index;
   export let carousel;
@@ -32,7 +32,7 @@
   });
 </script>
 
-<div class="bu-card card-container">
+<div id={navToLink[index+1]} class="bu-card card-container">
   <div bind:this={carousel} class="carousel-container">
     <div class="glide">
       <div class="glide__track" data-glide-el="track">
@@ -72,9 +72,9 @@
         </figure>
       </div>
       {#if textPages[index]}
-        <p class="title is-4 font-white">
+        <h5 class="title is-4 font-white">
           {textPages[index].header}
-        </p>
+        </h5>
       {/if}
     </div>
     <div class="content bu-is-clipped content font-white">
@@ -88,23 +88,16 @@
 </div>
 
 <style lang="scss">
+  h5 {
+    font-family: Orator;
+  }
   .font-white {
     color: white;
   }
   .card-content {
     background-color: transparent;
   }
-  .play-button-container {
-    position: absolute;
-    width: 25%;
-    top: 50%; /* position the top  edge of the element at the middle of the parent */
-    left: 50%; /* position the left edge of the element at the middle of the parent */
 
-    transform: translate(-50%, -50%);
-    height: auto;
-    z-index: 5;
-    object-fit: cover;
-  }
   .content {
     max-height: 20rem;
     overflow: hidden;
@@ -117,32 +110,9 @@
     display: flex;
     flex-direction: column;
     background-color: transparent;
-    &:nth-child(4) {
-      .show-more {
-        display: none !important;
-      }
-    }
+  
   }
 
-  .blur {
-    left: 0;
-    right: 0;
-    z-index: 0;
-    position: relative;
-
-    &::before {
-      pointer-events: none;
-      position: absolute;
-      content: "";
-      height: 100%;
-      display: block;
-      left: 0;
-      right: 0;
-      top: 0;
-      z-index: 2;
-      backdrop-filter: blur(5px);
-    }
-  }
   .carousel-container {
     img {
       object-position: right;
@@ -155,12 +125,12 @@
     }
   }
   .page-arrow-container {
-    width: 60px;
+    width: 30px;
     border-radius: 50%;
     position: absolute;
     border: none;
     overflow: hidden;
-    height: 60px;
+    height: 30px;
     bottom: 0;
 
     img {
@@ -168,7 +138,7 @@
     }
   }
   .arrow-left {
-    right: 60px;
+    right: 40px;
   }
   .arrow-right {
     transform: rotate(180deg);

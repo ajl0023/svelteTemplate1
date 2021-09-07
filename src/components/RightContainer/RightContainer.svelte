@@ -22,6 +22,7 @@
   <ImagePage index={4} />
   <Gallery />
   <ImagePage index={3} />
+
   <TextPage index={4} />
   <CarouselFull />
   <CarouselRight {carouselPage} page="right" />
@@ -41,7 +42,7 @@
 <style lang="scss">
   .container {
     align-items: center;
-    transform: translateY(-600vh);
+    transform: translateY(-900vh);
     transition: all 1s ease-out;
     height: 100vh;
     max-width: 50vw;
@@ -88,11 +89,6 @@
     .container {
       transform: translateY(0) !important;
       justify-content: center;
-    }
-  }
-  @media (max-width: 650px) {
-    .left-container-desktop {
-      display: none;
     }
   }
 </style>

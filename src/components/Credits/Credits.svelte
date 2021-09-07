@@ -70,11 +70,7 @@
     font-family: Orator;
     overflow: hidden;
   }
-  .mobile-header {
-    text-align: center;
-  }
-  .credits-container-sub {
-  }
+
   .sub-container {
     flex-direction: column;
     justify-content: flex-start;
@@ -84,7 +80,12 @@
     width: 100%;
     display: flex;
     position: relative;
+    height: 100%;
 
+    @media (max-width: 870px) {
+      padding-top: 60px;
+      height: 30px;
+    }
     .title-image-container {
       max-width: 400px;
 
@@ -131,29 +132,6 @@
     }
     @media (max-width: 1270px) {
       height: 600px;
-    }
-  }
-
-  .mobile-container {
-    width: 100%;
-    padding: 20px;
-    text-align: center;
-
-    .mobile-header-container {
-      font-size: 1.6em;
-      margin-bottom: 1rem;
-    }
-    .mobile-credits-container {
-      margin-bottom: 2rem;
-      &:not(:last-child)::after {
-        content: "";
-        display: block;
-        width: 50px;
-        height: 1px;
-        padding: 20px;
-        margin: auto;
-        border-bottom: 1px solid white;
-      }
     }
   }
 </style>

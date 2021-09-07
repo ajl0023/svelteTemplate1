@@ -25,13 +25,14 @@
       title: "equestrian",
       type: "image",
     },
-    {
-      title: "pictures",
-      type: "gallery",
-    },
+
     {
       title: "video render",
       type: "video",
+    },
+    {
+      title: "behind the scenes",
+      type: "gallery",
     },
     {
       title: "drone footage",
@@ -40,7 +41,7 @@
   ];
 </script>
 
-<div class="logo-wrapper">
+<div id='home' class="logo-wrapper">
   <div class="logo-container">
     <img
       class="image-logo"

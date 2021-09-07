@@ -51,17 +51,8 @@
       max-width: 10em;
       height: auto;
     }
+  }
 
-    .logo:global {
-      display: none;
-      object-fit: cover;
-      height: auto;
-      width: 100%;
-    }
-  }
-  .menu-label {
-    cursor: pointer;
-  }
   @media (max-width: 650px) {
     .secondary-main-trigger-icon {
       display: none;

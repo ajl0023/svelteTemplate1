@@ -39,15 +39,6 @@
       display: none;
     }
 
-    .content-text {
-      font-family: "Roboto", sans-serif;
-      text-align: center;
-    }
-    .content-header {
-      text-align: center;
-      margin-bottom: 5%;
-      color: white;
-    }
     .text-content {
       max-width: 50%;
       overflow: hidden;
@@ -63,9 +54,6 @@
     @media (max-width: 950px) {
       .text-content {
         padding-top: 67px;
-      }
-      .content-text {
-        margin-bottom: 2rem;
       }
     }
   }

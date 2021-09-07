@@ -1,4 +1,6 @@
 ﻿<script>
+  import { modal } from "../../stores";
+
   export let index;
   const images = [
     {
@@ -15,6 +17,7 @@
       url: "https://res.cloudinary.com/dt4xntymn/image/upload/v1630790318/misc/bgPhotos/bg3_mi7jx9.jpg",
     },
     {
+      videoUrl: "https://www.youtube.com/embed/nTS10ZQM5Ms",
       type: "video",
       url: "https://res.cloudinary.com/dt4xntymn/image/upload/v1630790318/misc/bgPhotos/bg4_ma0d9j.jpg",
     },
@@ -23,9 +26,20 @@
       url: "https://res.cloudinary.com/dt4xntymn/image/upload/v1630790322/misc/bgPhotos/drone_s8lkqw.png",
     },
   ];
+  $: {
+  }
 </script>
 
-<div class="page ">
+<div
+  on:click={() => {
+    if (images[index].type === "video") {
+      $modal.visibility = true;
+      $modal.content = images[index].videoUrl;
+      $modal.type = "video";
+    }
+  }}
+  class="page "
+>
   <div class="image-container {images[index].type === 'video' ? 'blur' : ''} ">
     {#if images[index].type === "video"}
       <img

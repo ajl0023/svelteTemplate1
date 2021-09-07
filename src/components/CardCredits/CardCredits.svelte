@@ -4,7 +4,7 @@
 
 <div id="credits" class="mobile-container">
   <div class="mobile-header-container">
-    <h5>development credits</h5>
+    <h5 class="credits-title">development credits</h5>
   </div>
   {#each creditsContent as credit}
     <div class="mobile-credits-container">
@@ -17,64 +17,9 @@
 </div>
 
 <style lang="scss">
-  .container {
-    width: 50vw;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-
-    gap: 2rem;
-    overflow: hidden;
-  }
-  .mobile-header {
-    text-align: center;
-  }
-  .credits-container-sub {
-  }
-  .sub-container {
-    flex-direction: column;
-    justify-content: flex-start;
-    width: 100%;
-  }
-  .title-container {
-    width: 100%;
-    display: flex;
-    position: relative;
-
-    .title-image-container {
-      max-width: 400px;
-
-      @media (max-width: 870px) {
-        max-width: 200px;
-      }
-    }
-    img {
-      object-fit: contain;
-      width: 100%;
-    }
-  }
-  .content-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    padding: 20px;
-    height: 700px;
-    .credits-container {
-      font-size: 1.3em;
-
-      text-align: center;
-      margin-bottom: 1rem;
-
-      @media (max-width: 1270px) {
-        p {
-          font-size: 0.6em;
-        }
-      }
-    }
-    @media (max-width: 1270px) {
-      height: 600px;
-    }
+  .credits-title {
+    font-family: Orator;
+    font-size: 1.5em;
   }
 
   .mobile-container {

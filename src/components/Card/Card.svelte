@@ -1,9 +1,10 @@
 ﻿<script>
-  import { textPages } from "../../pageContent";
+  import { navToLink, textPages } from "../../pageContent";
+  import { modal } from "../../stores";
+  import Arrow from "./Arrow.svelte";
 
-  let showMore;
-  export let page;
   export let index;
+  let showMore = false;
   const images = [
     {
       type: "image",
@@ -25,13 +26,15 @@
       url: "https://res.cloudinary.com/dt4xntymn/image/upload/v1630790318/misc/bgPhotos/bg3_mi7jx9.jpg",
     },
     {
+      type: "video",
+      url: "https://res.cloudinary.com/dt4xntymn/image/upload/v1630790318/misc/bgPhotos/bg4_ma0d9j.jpg",
+      videoUrl: "https://www.youtube.com/embed/nTS10ZQM5Ms",
+    },
+    {
       type: "gallery",
       url: "https://res.cloudinary.com/dt4xntymn/image/upload/v1630790318/misc/bgPhotos/bg3_mi7jx9.jpg",
     },
-    {
-      type: "video",
-      url: "https://res.cloudinary.com/dt4xntymn/image/upload/v1630790318/misc/bgPhotos/bg4_ma0d9j.jpg",
-    },
+
     {
       type: "video",
       url: "https://res.cloudinary.com/dt4xntymn/image/upload/v1630790322/misc/bgPhotos/drone_s8lkqw.png",
@@ -40,24 +43,29 @@
   console.log(index);
 </script>
 
-<div class="bu-card card-container">
+<div class="bu-card card-container" id={navToLink[index + 1]}>
   <div class="bu-card-image">
     <figure
+      on:click={() => {
+        if (images[index].type === "video") {
+          $modal.visibility = true;
+          $modal.content = images[index].videoUrl;
+          $modal.type = "video";
+        }
+      }}
       class="bu-image bu-is-4by3 {images[index].type === 'video' ? 'blur' : ''}"
     >
-      {#if page.type === "video"}
+      {#if images[index].type === "video"}
         <div class="play-button-container">
-          <figure class="image is-square ">
+          <figure class="bu-image bu-is-square ">
             <img
               src="https://res.cloudinary.com/dt4xntymn/image/upload/v1630788553/misc/playButton_rbgj1t.png"
               alt=""
             />
           </figure>
         </div>
-      {/if}{#if page.type === "carousel"}
-        <div class="play-button-container" />
-      {:else}
-        <img src={images[index] && images[index].url} alt="" />{/if}
+      {/if}
+      <img src={images[index] && images[index].url} alt="" />
     </figure>
   </div>
   <div class="card-content bu-card-content">
@@ -68,22 +76,44 @@
         </figure>
       </div>
       {#if textPages[index]}
-        <p class="title is-4 font-white">
+        <h5 class="title is-4 font-white">
           {textPages[index].header}
-        </p>
+        </h5>
       {/if}
     </div>
-    <div class="content bu-is-clipped content font-white">
+    <div
+      class="content bu-is-clipped content font-white {showMore
+        ? 'show-more'
+        : ''}"
+    >
       {#if textPages[index]}
         {#each textPages[index].paragraphs as p}
           <p>{p}</p>
         {/each}
       {/if}
     </div>
+    <br />
+    <div
+      on:click={() => {
+        console.log(234234);
+        showMore = !showMore;
+      }}
+      class="bu-level bu-is-mobile"
+    >
+      <div class="bu-level-left">
+        <p class="bu-level-left bu-level-item">Read More</p>
+        <span class="bu-level-left bu-level-item bu-icon bu-is-small">
+          <Arrow {showMore} />
+        </span>
+      </div>
+    </div>
   </div>
 </div>
 
 <style lang="scss">
+  h5 {
+    font-family: Orator;
+  }
   .font-white {
     color: white;
   }
@@ -119,13 +149,8 @@
       }
     }
   }
-  .arrow {
-    fill: white;
-    transform: rotate(180deg);
-  }
-  .rotate {
-    transform: rotate(0deg);
-  }
+ 
+ 
   .blur {
     left: 0;
     right: 0;
@@ -145,12 +170,9 @@
       backdrop-filter: blur(5px);
     }
   }
-  .carousel-container {
-    height: 100%;
-    bottom: 0;
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
+  .show-more {
+    display: block;
+    max-height: 100%;
   }
+
 </style>

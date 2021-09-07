@@ -1,4 +1,8 @@
 ﻿<script>
+  import { highResBts } from "../../pageContent";
+
+  import { modal } from "../../stores";
+
   const images = [
     "http://res.cloudinary.com/dt4xntymn/image/upload/v1630879411/gallery/2021.05.29_roof_2_ontfwx.jpg",
 
@@ -18,11 +22,19 @@
 </script>
 
 <div>
-  <div id="behind the scenes" class="container">
+  <div id="behind-the-scenes" class="container">
     <div class="bu-title bu-has-text-centered">behind the scenes</div>
     <div class="gallery-container">
-      {#each images as image}
-        <img src={image} alt="" />{/each}
+      {#each images as image, i}
+        <img
+          on:click={() => {
+            $modal.visibility = true;
+            $modal.content = highResBts[i];
+            $modal.type = "image";
+          }}
+          src={image}
+          alt=""
+        />{/each}
     </div>
   </div>
 </div>
@@ -38,6 +50,7 @@
     }
   }
   .bu-title {
+    font-family: Orator;
     color: white;
   }
   .gallery-container {

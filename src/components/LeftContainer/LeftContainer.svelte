@@ -24,15 +24,16 @@
     </div>
   </div>
 
-  <ImagePage index={0} />
-  <TextPage bgColor="#a4632e" index={1} />
-  <CarouselLeft {carouselPage} page="left" />
-  <TextPage index={3} />
-  <ImagePage index={2} />
-  <TextPage bgColor="#a4632e" index={5} />
-  <GalleryPreview />
-  <TextPage index={7} />
-  <Credits page="left"  />
+  <ImagePage name="malibu" index={0} />
+  <TextPage name="discover" bgColor="#a4632e" index={1} />
+  <CarouselLeft name="renders" {carouselPage} page="left" />
+  <TextPage name="floorplans" index={3} />
+  <ImagePage name="equestrian" index={2} />
+  <TextPage name="video render" bgColor="#a4632e" index={5} />
+  <GalleryPreview name="behind the scenes" />
+
+  <TextPage index={7} name="drone footage" />
+  <Credits page="left" />
 </div>
 
 <style lang="scss">
@@ -87,9 +88,5 @@
       justify-content: center;
     }
   }
-  @media (max-width: 650px) {
-    .left-container-desktop {
-      display: none;
-    }
-  }
+
 </style>
